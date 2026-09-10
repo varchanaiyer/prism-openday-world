@@ -1,0 +1,446 @@
+[
+ {
+  "id": "119475",
+  "track": "technical",
+  "title": "Towards Understanding Safety Alignment: A Mechanistic Perspective from Safety Neurons",
+  "authors": [
+   "Jianhui Chen",
+   "Xiaozhi Wang",
+   "Zijun Yao",
+   "Yushi Bai",
+   "Lei Hou",
+   "Juanzi Li"
+  ],
+  "abstract": "Large language models (LLMs) excel in various capabilities but pose safety risks such as generating harmful content and misinformation, even after safety alignment. In this paper, we explore the inner mechanisms of safety alignment through the lens of mechanistic interpretability, focusing on identifying and analyzing safety neurons within LLMs that are responsible for safety behaviors. We propose inference-time activation contrasting to locate these neurons and dynamic activation patching to evaluate their causal effects on model safety. Experiments on multiple prevalent LLMs demonstrate that we can consistently identify about 5% safety neurons, and by only patching their activations we can restore over 90% of the safety performance across various red-teaming benchmarks without influencing general ability. The finding of safety neurons also helps explain the ''alignment tax'' phenomenon by revealing that the key neurons for model safety and helpfulness significantly overlap, yet they require different activation patterns for the same neurons. Furthermore, we demonstrate an application of our findings in safeguarding LLMs by detecting unsafe outputs before generation.",
+  "keywords": "Social Aspects:Accountability, Transparency and Interpretability",
+  "page": "https://neurips.cc/virtual/2025/poster/119475",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/119475.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/119475-thumb.png"
+ },
+ {
+  "id": "118303",
+  "track": "technical",
+  "title": "Revising and Falsifying Sparse Autoencoder Feature Explanations",
+  "authors": [
+   "George Ma",
+   "Samuel Pfrommer",
+   "Somayeh Sojoudi"
+  ],
+  "abstract": "Mechanistic interpretability research seeks to reverse-engineer large language models (LLMs) by uncovering the internal representations of concepts within their activations. Sparse Autoencoders (SAEs) have emerged as a valuable tool for disentangling polysemantic neurons into more monosemantic, interpretable features. However, recent work on automatic explanation generation for these features has faced challenges: explanations tend to be overly broad and fail to take polysemanticity into consideration. This work addresses these limitations by introducing a similarity-based strategy for sourcing close negative sentences that more effectively falsify generated explanations. Additionally, we propose a structured, component-based format for feature explanations and a tree-based, iterative explanation method that refines explanations. We demonstrate that our structured format and tree-based explainer improve explanation quality, while our similarity-based evaluation strategy exposes biases in existing interpretability methods. We also analyze the evolution of feature complexity and polysemanticity across LLM layers, offering new insights into information content within LLMs' residual streams.",
+  "keywords": "General Machine Learning:Representation Learning",
+  "page": "https://neurips.cc/virtual/2025/poster/118303",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/118303.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/118303-thumb.png"
+ },
+ {
+  "id": "117903",
+  "track": "technical",
+  "title": "Projecting Assumptions: The Duality Between Sparse Autoencoders and Concept Geometry",
+  "authors": [
+   "Sai Sumedh R. Hindupur",
+   "Ekdeep S Lubana",
+   "Thomas Fel",
+   "Demba Ba"
+  ],
+  "abstract": "Sparse Autoencoders (SAEs) are widely used to interpret neural networks by identifying meaningful concepts from their representations. However, do SAEs truly uncover all concepts a model relies on, or are they inherently biased toward certain kinds of concepts? We introduce a unified framework that recasts SAEs as solutions to a bilevel optimization problem, revealing a fundamental challenge: each SAE imposes structural assumptions about how concepts are encoded in model representations, which in turn shapes what it can and cannot detect. This means different SAEs are not interchangeable -- switching architectures can expose entirely new concepts or obscure existing ones. To systematically probe this effect, we evaluate SAEs across a spectrum of settings: from controlled toy models that isolate key variables, to semi-synthetic experiments on real model activations and finally to large-scale, naturalistic datasets. Across this progression, we examine two fundamental properties that real-world concepts often exhibit: heterogeneity in intrinsic dimensionality (some concepts are inherently low-dimensional, others are not) and nonlinear separability. We show that SAEs fail to recover concepts when these properties are ignored, and we design a new SAE that explicitly incorporates both, enabling the discovery of previously hidden concepts and reinforcing our theoretical insights. Our findings challenge the idea of a universal SAE and underscores the need for architecture-specific choices in model interpretability. Overall, we argue an SAE does not just reveal concepts -- it determines what can be seen at all.",
+  "keywords": "Social Aspects:Accountability, Transparency and Interpretability",
+  "page": "https://neurips.cc/virtual/2025/poster/117903",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/117903.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/117903.png"
+ },
+ {
+  "id": "117222",
+  "track": "technical",
+  "title": "LLM Safety Alignment is Divergence Estimation in Disguise",
+  "authors": [
+   "Rajdeep Haldar",
+   "Ziyi Wang",
+   "Guang Lin",
+   "Yue XING",
+   "Qifan Song"
+  ],
+  "abstract": "We present a theoretical framework showing that popular LLM alignment methods—including RLHF and its variants—can be understood as divergence estimators between aligned (safe or preferred) and unaligned (harmful or less-preferred) distributions. This perspective explains the emergence of separation in the latent space between safe and harmful prompts after alignment. As an application of our general divergence framework, we propose KLDO, a novel KL divergence-based alignment method, and empirically validate its effectiveness. We further show that using compliance–refusal datasets, rather than standard preference-based datasets, leads to stronger separation and improved safety alignment. Finally, to quantify the separation effect, we propose a distance-based metric in the prompt representation space, which also acts as a statistically significant indicator for model safety.",
+  "keywords": "Reinforcement Learning",
+  "page": "https://neurips.cc/virtual/2025/poster/117222",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/117222.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/117222-thumb.png"
+ },
+ {
+  "id": "119752",
+  "track": "evals",
+  "title": "CoP: Agentic Red-teaming for Large Language Models using Composition of Principles",
+  "authors": [
+   "Chen Xiong",
+   "Pin-Yu Chen",
+   "Tsung-Yi Ho"
+  ],
+  "abstract": "Recent advances in Large Language Models (LLMs) have spurred transformative applications in various domains, ranging from open-source to proprietary LLMs. However, jailbreak attacks, which aim to break safety alignment and user compliance by tricking the target LLMs into answering harmful and risky responses, are becoming an urgent concern. The practice of red-teaming for LLMs is to proactively explore potential risks and error-prone instances before the release of frontier AI technology. This paper proposes an agentic workflow to automate and scale the red-teaming process of LLMs through the Composition-of-Principles (CoP) framework, where human users provide a set of red-teaming principles as instructions to an AI agent to automatically orchestrate effective red-teaming strategies and generate jailbreak prompts. Distinct from existing red-teaming methods, our CoP framework provides a unified and extensible framework to encompass and orchestrate human-provided red-teaming principles to enable the automated discovery of new red-teaming strategies. When tested against leading LLMs, CoP reveals unprecedented safety risks by finding novel jailbreak prompts and improving the best-known single-turn attack success rate by up to 19.0 times.",
+  "keywords": "Social Aspects:Trustworthy Machine Learning",
+  "page": "https://neurips.cc/virtual/2025/poster/119752",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/119752.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/119752-thumb.png"
+ },
+ {
+  "id": "121833",
+  "track": "evals",
+  "title": "CARES: Comprehensive Evaluation of Safety and Adversarial Robustness in Medical LLMs",
+  "authors": [
+   "Sijia Chen",
+   "Xiaomin Li",
+   "mengxue zhang",
+   "Eric Hanchen Jiang",
+   "Qingcheng Zeng",
+   "Chen-Hsiang Yu"
+  ],
+  "abstract": "Large language models (LLMs) are increasingly deployed in medical contexts, raising critical concerns about safety, alignment, and susceptibility to adversarial manipulation. While prior benchmarks assess model refusal capabilities for harmful prompts, they often lack clinical specificity, graded harmfulness levels, and coverage of jailbreak-style attacks. We introduce CARES (Clinical Adversarial Robustness and Evaluation of Safety), a benchmark for evaluating LLM safety in healthcare. CARES includes over 18,000 prompts spanning eight medical safety principles, four harm levels, and four prompting styles—direct, indirect, obfuscated, and role-play—to simulate both malicious and benign use cases. We propose a three-way response evaluation protocol (Accept, Caution, Refuse) and a fine-grained Safety Score metric to assess model behavior. Our analysis reveals that many state-of-the-art LLMs remain vulnerable to jailbreaks that subtly rephrase harmful prompts, while also over-refusing safe but atypically phrased queries. Finally, we propose a mitigation strategy using a lightweight classifier to detect jailbreak attempts and steer models toward safer behavior via reminder-based conditioning. CARES provides a rigorous framework for testing and improving medical LLM safety under adversarial and ambiguous conditions.",
+  "keywords": "Social Aspects:Fairness, Equity, Justice and Safety",
+  "page": "https://neurips.cc/virtual/2025/poster/121833",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121833.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121833-thumb.png"
+ },
+ {
+  "id": "121801",
+  "track": "evals",
+  "title": "A Multi-Task Benchmark for Abusive Language Detection in Low-Resource Settings",
+  "authors": [
+   "Fitsum Gaim",
+   "Hoyun Song",
+   "Huije Lee",
+   "Changgeon Ko",
+   "Euijun Hwang",
+   "Jong C. Park"
+  ],
+  "abstract": "Content moderation research has recently made significant advances, but remains limited in serving the majority of the world's languages due to the lack of resources, leaving millions of vulnerable users to online hostility. This work presents a large-scale human-annotated multi-task benchmark dataset for abusive language detection in Tigrinya social media with joint annotations for three tasks: abusiveness, sentiment, and topic classification. The dataset comprises 13,717 YouTube comments annotated by nine native speakers, collected from 7,373 videos with a total of over 1.2 billion views across 51 channels. We developed an iterative term clustering approach for effective data selection. Recognizing that around 64% of Tigrinya social media content uses Romanized transliterations rather than native Ge'ez script, our dataset accommodates both writing systems to reflect actual language use. We establish strong baselines across the tasks in the benchmark, while leaving significant challenges for future contributions. Our experiments demonstrate that small fine-tuned models outperform prompted frontier large language models (LLMs) in the low-resource setting, achieving 86.67% F1 in abusiveness detection (7+ points over best LLM), and maintain stronger performance in all other tasks. The benchmark is made public to promote research on online safety.",
+  "keywords": "Social Aspects:Fairness, Equity, Justice and Safety",
+  "page": "https://neurips.cc/virtual/2025/poster/121801",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121801.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121801-thumb.png"
+ },
+ {
+  "id": "117676",
+  "track": "evals",
+  "title": "ConfTuner: Training Large Language Models to Express Their Confidence Verbally",
+  "authors": [
+   "Yibo Li",
+   "Miao Xiong",
+   "Jiaying Wu",
+   "Bryan Hooi"
+  ],
+  "abstract": "Large Language Models (LLMs) are increasingly deployed in high-stakes domains such as science, law, and healthcare, where accurate expressions of uncertainty are essential for reliability and trust. However, current LLMs are often observed to generate incorrect answers with high confidence—a phenomenon known as \"overconfidence\". Recent efforts have focused on calibrating LLMs' verbalized confidence: i.e., their expressions of confidence in text form, such as \"I am 80% confident that...\". Existing approaches either rely on prompt engineering or fine-tuning with heuristically generated uncertainty estimates, both of which have limited effectiveness and generalizability. Motivated by the notion of proper scoring rules for calibration in classical machine learning models, we introduce ConfTuner, a simple and efficient fine-tuning method that introduces minimal overhead and does not require ground-truth confidence scores or proxy confidence estimates. ConfTuner relies on a new loss function, tokenized Brier score, which we theoretically prove to be a proper scoring rule, intuitively meaning that it \"correctly incentivizes the model to report its true probability of being correct\". ConfTuner improves calibration across diverse reasoning tasks and generalizes to black-box models such as GPT-4o. Our results further show that better-calibrated confidence enables downstream gains in self-correction and model cascade, advancing the development of trustworthy LLM systems. The code is available at https://github.com/liushiliushi/ConfTuner.",
+  "keywords": "Social Aspects:Trustworthy Machine Learning",
+  "page": "https://neurips.cc/virtual/2025/poster/117676",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/117676.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/117676.png"
+ },
+ {
+  "id": "120154",
+  "track": "frontier",
+  "title": "AgentAuditor: Human-level Safety and Security Evaluation for LLM Agents",
+  "authors": [
+   "Hanjun Luo",
+   "Shenyu Dai",
+   "Chiming Ni",
+   "Xinfeng Li",
+   "Guibin Zhang",
+   "Kun Wang",
+   "Tongliang Liu",
+   "Hanan Salam"
+  ],
+  "abstract": "Despite the rapid advancement of LLM-based agents, the reliable evaluation of their safety and security remains a significant challenge. Existing rule-based or LLM-based evaluators often miss dangers in agents' step-by-step actions, overlook subtle meanings, fail to see how small issues compound, and get confused by unclear safety or security rules. To overcome this evaluation crisis, we introduce AgentAuditor, a universal, training-free, memory-augmented reasoning framework that empowers LLM evaluators to emulate human expert evaluators. AgentAuditor constructs an experiential memory by having an LLM adaptively extract structured semantic features (e.g., scenario, risk, behavior) and generate associated chain-of-thought reasoning traces for past interactions. A multi-stage, context-aware retrieval-augmented generation process then dynamically retrieves the most relevant reasoning experiences to guide the LLM evaluator's assessment of new cases. Moreover, we developed ASSEBench, the first benchmark designed to check how well LLM-based evaluators can spot both safety risks and security threats. ASSEBench comprises 2293 meticulously annotated interaction records, covering 15 risk types across 29 application scenarios. A key feature of ASSEBench is its nuanced approach to ambiguous risk situations, employing \"Strict\" and \"Lenient\" judgment standards. Experiments demonstrate that AgentAuditor not only consistently improves the evaluation performance of LLMs across all benchmarks but also sets a new state-of-the-art in LLM-as-a-judge for agent safety and security, achieving human-level accuracy. Our work is openly accessible at https://github.com/Astarojth/AgentAuditor-ASSEBench.",
+  "keywords": "Social Aspects:Fairness, Equity, Justice and Safety",
+  "page": "https://neurips.cc/virtual/2025/poster/120154",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/120154.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/120154-thumb.png"
+ },
+ {
+  "id": "121456",
+  "track": "frontier",
+  "title": "BountyBench: Dollar Impact of AI Agent Attackers and Defenders on Real-World Cybersecurity Systems",
+  "authors": [
+   "Andy Zhang",
+   "Joey Ji",
+   "Celeste Menders",
+   "Riya Dulepet",
+   "Thomas Qin",
+   "Ron Wang",
+   "Junrong Wu",
+   "Kyleen Liao",
+   "Jiliang Li",
+   "Jinghan Hu",
+   "Sara Hong",
+   "Nardos Demilew",
+   "Shivatmica Murgai",
+   "Jason Tran",
+   "Nishka Kacheria",
+   "Ethan Ho",
+   "Denis Liu",
+   "Lauren McLane",
+   "Olivia Bruvik",
+   "Dai-Rong Han",
+   "Seungwoo Kim",
+   "Akhil Vyas",
+   "Cuiyuanxiu Chen",
+   "Ryan Li",
+   "Weiran Xu",
+   "Jonathan Ye",
+   "Prerit Choudhary",
+   "Siddharth M. Bhatia",
+   "Vikram Sivashankar",
+   "Yuxuan Bao",
+   "Dawn Song",
+   "Dan Boneh",
+   "Daniel Ho",
+   "Percy Liang"
+  ],
+  "abstract": "AI agents have the potential to significantly alter the cybersecurity landscape. Here, we introduce the first framework to capture offensive and defensive cyber-capabilities in evolving real-world systems. Instantiating this framework with BountyBench, we set up 25 systems with complex, real-world codebases. To capture the vulnerability lifecycle, we define three task types: Detect (detecting a new vulnerability), Exploit (exploiting a given vulnerability), and Patch (patching a given vulnerability). For Detect, we construct a new success indicator, which is general across vulnerability types and provides localized evaluation. We manually set up the environment for each system, including installing packages, setting up server(s), and hydrating database(s). We add 40 bug bounties, which are vulnerabilities with monetary awards from \\\\$10 to \\\\$30,485, covering 9 of the OWASP Top 10 Risks. To modulate task difficulty, we devise a new strategy based on information to guide detection, interpolating from identifying a zero day to exploiting a given vulnerability. We evaluate 10 agents: Claude Code, OpenAI Codex CLI with o3-high and o4-mini, and custom agents with o3-high, GPT-4.1, Gemini 2.5 Pro Preview, Claude 3.7 Sonnet Thinking, Qwen3 235B A22B, Llama 4 Maverick, and DeepSeek-R1. Given up to three attempts, the top-performing agents are OpenAI Codex CLI: o3-high (12.5% on Detect, mapping to \\\\$3,720; 90% on Patch, mapping to \\\\$14,152), Custom Agent with Claude 3.7 Sonnet Thinking (67.5% on Exploit), and OpenAI Codex CLI: o4-mini (90% on Patch, mapping to \\\\$14,422). OpenAI Codex CLI: o3-high, OpenAI Codex CLI: o4-mini, and Claude Code are more capable at defense, achieving higher Patch scores of 90%, 90%, and 87.5%, compared to Exploit scores of 47.5%, 32.5%, and 57.5% respectively; while the custom agents are relatively balanced between offense and defense, achieving Exploit scores of 17.5-67.5% and Patch scores of 25-60%.",
+  "keywords": "Applications",
+  "page": "https://neurips.cc/virtual/2025/poster/121456",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121456.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121456.png"
+ },
+ {
+  "id": "116653",
+  "track": "frontier",
+  "title": "Inference-Time Reward Hacking in Large Language Models",
+  "authors": [
+   "Hadi Khalaf",
+   "Claudio Mayrink Verdun",
+   "Alex Oesterling",
+   "Himabindu Lakkaraju",
+   "Flavio Calmon"
+  ],
+  "abstract": "A common paradigm to improve the performance of large language models is optimizing for a reward model. Reward models assign a numerical score to an LLM’s output that indicates, for example, how likely it is to align with user preferences or safety goals. However, reward models are never perfect. They inevitably function as proxies for complex desiderata such as correctness, helpfulness, and safety. By overoptimizing for a misspecified reward, we can subvert intended alignment goals and reduce overall performance -- a phenomenon commonly referred to as reward hacking. In this work, we characterize reward hacking in inference-time alignment and demonstrate when and how we can mitigate it by hedging on the proxy reward. We study this phenomenon under Best-of-$n$ (BoN) and Soft Best-of-$n$ (SBoN), and we introduce Best-of-Poisson (BoP) that provides an efficient, near-exact approximation of the optimal reward-KL divergence policy at inference time. We show that the characteristic pattern of hacking as observed in practice (where the true reward first increases before declining) is an inevitable property of a broad class of inference-time mechanisms, including BoN and BoP. To counter this effect, we introduce $\\texttt{HedgeTune}$, an efficient algorithm to find the optimal inference-time parameter. We demonstrate that hedging mitigates reward hacking and achieves superior reward-distortion tradeoffs on math, reasoning, and human-preference setups.",
+  "keywords": "Social Aspects:Trustworthy Machine Learning",
+  "page": "https://neurips.cc/virtual/2025/poster/116653",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/116653.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/116653.png"
+ },
+ {
+  "id": "116237",
+  "track": "frontier",
+  "title": "Rectifying Shortcut Behaviors in Preference-based Reward Learning",
+  "authors": [
+   "Wenqian Ye",
+   "Guangtao Zheng",
+   "Aidong Zhang"
+  ],
+  "abstract": "In reinforcement learning from human feedback, preference-based reward models play a central role in aligning large language models to human-aligned behavior. However, recent studies show that these models are prone to reward hacking and often fail to generalize well due to over-optimization. They achieve high reward scores by exploiting shortcuts, that is, exploiting spurious features (e.g., response verbosity, agreeable tone, or sycophancy) that correlate with human preference labels in the training data rather than genuinely reflecting the intended objectives. In this paper, instead of probing these issues one at a time, we take a broader view of the reward hacking problem as shortcut behaviors and introduce a principled yet flexible approach to mitigate shortcut behaviors in preference-based reward learning. Inspired by the invariant theory in the kernel perspective, we propose Preference-based Reward Invariance for Shortcut Mitigation (PRISM), which learns group-invariant kernels with feature maps in a closed-form learning objective. Experimental results in several benchmarks show that our method consistently improves the accuracy of the reward model on diverse out-of-distribution tasks and reduces the dependency on shortcuts in downstream policy models, establishing a robust framework for preference-based alignment.",
+  "keywords": "Reinforcement Learning",
+  "page": "https://neurips.cc/virtual/2025/poster/116237",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/116237.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/116237.png"
+ },
+ {
+  "id": "120115",
+  "track": "frontier",
+  "title": "Information Retrieval Induced Safety Degradation in AI Agents",
+  "authors": [
+   "Cheng Yu",
+   "Benedikt Stroebl",
+   "Diyi Yang",
+   "Orestis Papakyriakopoulos"
+  ],
+  "abstract": "Despite the growing integration of retrieval-enabled AI agents into society, their safety and ethical behavior remain inadequately understood. In particular, the growing integration of LLMs and AI agents with external information sources and real-world environments raises critical questions about how they engage with and are influenced by these external data sources and interactive contexts. This study investigates how expanding retrieval access—from no external sources to Wikipedia-based retrieval and open web search—affects model reliability, bias propagation, and harmful content generation. Through extensive benchmarking of censored and uncensored LLMs and AI Agents, our findings reveal a consistent degradation in refusal rates, bias sensitivity, and harmfulness safeguards as models gain broader access to external sources, culminating in a phenomenon we term safety degradation. Notably, retrieval-enabled agents built on aligned LLMs often behave more unsafely than uncensored models without retrieval. This effect persists even under strong retrieval accuracy and prompt-based mitigation, suggesting that the mere presence of retrieved content reshapes model behavior in structurally unsafe ways. These findings underscore the need for robust mitigation strategies to ensure fairness and reliability in retrieval-enabled and increasingly autonomous AI systems.",
+  "keywords": "Social Aspects:Fairness, Equity, Justice and Safety",
+  "page": "https://neurips.cc/virtual/2025/poster/120115",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/120115.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/120115-thumb.png"
+ },
+ {
+  "id": "121622",
+  "track": "governance",
+  "title": "Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition",
+  "authors": [
+   "Andy Zou",
+   "Maxwell Lin",
+   "Eliot Jones",
+   "Micha Nowak",
+   "Mateusz Dziemian",
+   "Nick Winter",
+   "Valent Nathanael",
+   "Ayla Croft",
+   "Xander Davies",
+   "Jai Patel",
+   "Robert Kirk",
+   "Yarin Gal",
+   "Dan Hendrycks",
+   "Zico Kolter",
+   "Matt Fredrikson"
+  ],
+  "abstract": "AI agents are rapidly being deployed across diverse industries, but can they adhere to deployment policies under attacks? We organized a one-month red teaming challenge---the largest of its kind to date---involving expert red teamers attempting to elicit policy violations from AI agents powered by $22$ frontier LLMs. Our challenge collected $1.8$ million prompt injection attacks, resulting in over $60,000$ documented successful policy violations, revealing critical vulnerabilities. Utilizing this extensive data, we construct a challenging AI agent red teaming benchmark, currently achieving near $100\\%$ attack success rates across all tested agents and associated policies. Our further analysis reveals high transferability and universality of successful attacks, underscoring the scale and criticality of existing AI agent vulnerabilities. We also observe minimal correlation between agent robustness and factors such as model capability, size, or inference compute budget, highlighting the necessity of substantial improvements in defense. We hope our benchmark and insights drive further research toward more secure and reliable AI agents.",
+  "keywords": "",
+  "page": "https://neurips.cc/virtual/2025/poster/121622",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121622.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121622-thumb.png"
+ },
+ {
+  "id": "115305",
+  "track": "technical",
+  "title": "LayerNavigator: Finding Promising Intervention Layers for Efficient Activation Steering in Large Language Models",
+  "authors": [
+   "Hao Sun",
+   "Huailiang Peng",
+   "Qiong Dai",
+   "Xu Bai",
+   "Yanan Cao"
+  ],
+  "abstract": "Activation steering is an efficient technique for aligning the behavior of large language models (LLMs) by injecting steering vectors directly into a model’s residual stream during inference. A pivotal challenge in this approach lies in choosing the right layers to intervene, as inappropriate selection can undermine behavioral alignment and even impair the model’s language fluency and other core capabilities. While single-layer steering allows straightforward evaluation on held-out data to identify the \"best\" layer, it offers only limited alignment improvements. Multi-layer steering promises stronger control but faces a combinatorial explosion of possible layer subsets, making exhaustive search impractical. To address these challenges, we propose LayerNavigator, which provides a principled and promising layer selection strategy. The core innovation of LayerNavigator lies in its novel, quantifiable criterion that evaluates each layer's steerability by jointly considering two key aspects: discriminability and consistency. By reusing the activations computed during steering vector generation, LayerNavigator requires no extra data and adds negligible overhead. Comprehensive experiments show that LayerNavigator achieves not only superior alignment but also greater scalability and interpretability compared to existing strategies. Our code is available at https://github.com/Bryson-Arrot/LayerNavigator",
+  "keywords": "Deep Learning:Generative Models and Autoencoders",
+  "page": "https://neurips.cc/virtual/2025/poster/115305",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/115305.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/115305-thumb.png"
+ },
+ {
+  "id": "116311",
+  "track": "technical",
+  "title": "Steering When Necessary: Flexible Steering Large Language Models with Backtracking",
+  "authors": [
+   "Zifeng Cheng",
+   "Jinwei Gan",
+   "Zhiwei Jiang",
+   "Cong Wang",
+   "Yafeng Yin",
+   "Xiang Luo",
+   "Yuchen Fu",
+   "Qing Gu"
+  ],
+  "abstract": "Large language models (LLMs) have achieved remarkable performance across many generation tasks. Nevertheless, effectively aligning them with desired behaviors remains a significant challenge. Activation steering is an effective and cost-efficient approach that directly modifies the activations of LLMs during the inference stage, aligning their responses with the desired behaviors and avoiding the high cost of fine-tuning. Existing methods typically indiscriminately intervene to all generations or rely solely on the question to determine intervention, which limits the accurate assessment of the intervention strength. To this end, we propose the Flexible Activation Steering with Backtracking (FASB) framework, which dynamically determines both the necessity and strength of intervention by tracking the internal states of the LLMs during generation, considering both the question and the generated content. Since intervening after detecting a deviation from the desired behavior is often too late, we further propose the backtracking mechanism to correct the deviated tokens and steer the LLMs toward the desired behavior. Extensive experiments on the TruthfulQA dataset and six multiple-choice datasets demonstrate that our method outperforms baselines. Our code will be released at https://github.com/gjw185/FASB.",
+  "keywords": "Applications:Language, Speech and Dialog",
+  "page": "https://neurips.cc/virtual/2025/poster/116311",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/116311.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/116311-thumb.png"
+ },
+ {
+  "id": "119154",
+  "track": "technical",
+  "title": "LinEAS: End-to-end Learning of Activation Steering with a Distributional Loss",
+  "authors": [
+   "Pau Rodriguez",
+   "Michal Klein",
+   "Eleonora Gualdoni",
+   "Valentino Maiorca",
+   "Arno Blaas",
+   "Luca Zappella",
+   "Marco Cuturi",
+   "Xavier Suau"
+  ],
+  "abstract": "The growing use of generative models in daily life calls for efficient mechanisms to control their generation, to e.g. produce safe content or provide users with tools to explore style changes. Ideally, such mechanisms should require low volume of unpaired data (\\ie without explicit preference), and should be cheap, both at train and inference time, while preserving output quality. Recent research has shown that such mechanisms can be obtained by intervening exclusively on model activations, with the goal of correcting distributional differences between activations seen when using prompts from a source vs. a target set (e.g. toxic and non-toxic sentences). While cheap, these fast methods are inherently crude: their maps are tuned locally, not accounting for their impact on downstream layers, resulting in interventions that cause unintended shifts when used out-of-sample. We propose in this work linear end-to-end activation steering (LinEAS), an approach trained with a global loss that accounts simultaneously for all layer-wise distributional shifts. In addition to being more robust, the loss used to train LinEAS can be regularized with sparsifying norms, which can automatically carry out neuron selection. LinEAS only requires a handful of unpaired samples to be effective, and beats similar baselines on toxicity mitigation in language models, becoming competitive with oracle-dependent methods that have access to strong supervision. LinEAS is modality-agnostic and we empirically find that it outperforms existing activation steering methods at mitigating and including new concepts at the output of single-step text-to-image generation models.",
+  "keywords": "Deep Learning:Generative Models and Autoencoders",
+  "page": "https://neurips.cc/virtual/2025/poster/119154",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/119154.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/119154-thumb.png"
+ },
+ {
+  "id": "117699",
+  "track": "technical",
+  "title": "Improved Representation Steering for Language Models",
+  "authors": [
+   "Zhengxuan Wu",
+   "Qinan Yu",
+   "Aryaman Arora",
+   "Christopher D Manning",
+   "Chris Potts"
+  ],
+  "abstract": "Steering methods for language models (LMs) seek to provide fine-grained and interpretable control over model generations by variously changing model inputs, weights, or representations to adjust behavior. Recent work has shown that adjusting weights or representations is often less effective than steering by prompting, for instance when wanting to introduce or suppress a particular concept. We demonstrate how to improve representation steering via our new Reference-free Preference Steering (RePS), a bidirectional preference-optimization objective that jointly does concept steering and suppression. We train three parameterizations of RePS and evaluate them on AxBench, a large-scale model steering benchmark. On Gemma models with sizes ranging from 2B to 27B, RePS outperforms all existing steering methods trained with a language modeling objective and substantially narrows the gap with prompting -- while promoting interpretability and minimizing parameter count. In suppression, RePS matches the language-modeling objective on Gemma-2 and outperforms it on the larger Gemma-3 variants while remaining resilient to prompt-based jailbreaking attacks that defeat prompting. Overall, our results suggest that RePS provides an interpretable and robust alternative to prompting for both steering and suppression.",
+  "keywords": "Social Aspects:Accountability, Transparency and Interpretability",
+  "page": "https://neurips.cc/virtual/2025/poster/117699",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/117699.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/117699.png"
+ },
+ {
+  "id": "120144",
+  "track": "technical",
+  "title": "Transformer Key-Value Memories Are Nearly as Interpretable as Sparse Autoencoders",
+  "authors": [
+   "Mengyu Ye",
+   "Jun Suzuki",
+   "Tatsuro Inaba",
+   "Tatsuki Kuribayashi"
+  ],
+  "abstract": "Recent interpretability work on large language models (LLMs) has been increasingly dominated by a feature-discovery approach with the help of proxy modules. Then, the quality of features learned by, e.g., sparse auto-encoders (SAEs), is evaluated. This paradigm naturally raises a critical question: do such learned features have better properties than those already represented within the original model parameters, and unfortunately, only a few studies have made such comparisons systematically so far. In this work, we revisit the interpretability of feature vectors stored in feed-forward (FF) layers, given the perspective of FF as key-value memories, with modern interpretability benchmarks. Our extensive evaluation revealed that SAE and FFs exhibits a similar range of interpretability, although SAEs displayed an observable but minimal improvement in some aspects. Furthermore, in certain aspects, surprisingly, even vanilla FFs yielded better interpretability than the SAEs, and features discovered in SAEs and FFs diverged. These bring questions about the advantage of SAEs from both perspectives of feature quality and faithfulness, compared to directly interpreting FF feature vectors, and FF key-value parameters serve as a strong baseline in modern interpretability research.",
+  "keywords": "Social Aspects:Accountability, Transparency and Interpretability",
+  "page": "https://neurips.cc/virtual/2025/poster/120144",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/120144.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/120144-thumb.png"
+ },
+ {
+  "id": "121440",
+  "track": "evals",
+  "title": "XIFBench: Evaluating Large Language Models on Multilingual Instruction Following",
+  "authors": [
+   "Zhenyu Li",
+   "Kehai Chen",
+   "Yunfei Long",
+   "Xuefeng Bai",
+   "Yaoyin Zhang",
+   "Xuchen Wei",
+   "Juntao Li",
+   "Min Zhang"
+  ],
+  "abstract": "Large Language Models (LLMs) have demonstrated remarkable instruction-following capabilities across various applications. However, their performance in multilingual settings lacks systematic investigation, with existing evaluations lacking fine-grained constraint analysis across diverse linguistic contexts. We introduce XIFBench, a comprehensive constraint-based benchmark for evaluating multilingual instruction-following abilities of LLMs, comprising 558 instructions with 0-5 additional constraints across five categories (Content, Style, Situation, Format, and Numerical) in six languages spanning different resource levels. To support reliable and consistent cross-lingual evaluation, we implement three methodological innovations: cultural accessibility annotation, constraint-level translation validation, and requirement-based evaluation using English requirements as semantic anchors across languages. Extensive experiments with various LLMs not only quantify performance disparities across resource levels but also provide detailed insights into how language resources, constraint categories, instruction complexity, and cultural specificity influence multilingual instruction-following. Our code and data are available at https://github.com/zhenyuli801/XIFBench.",
+  "keywords": "Applications:Language, Speech and Dialog",
+  "page": "https://neurips.cc/virtual/2025/poster/121440",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121440.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121440-thumb.png"
+ },
+ {
+  "id": "117753",
+  "track": "frontier",
+  "title": "Think-RM: Enabling Long-Horizon Reasoning in Generative Reward Models",
+  "authors": [
+   "Ilgee Hong",
+   "Changlong Yu",
+   "Liang Qiu",
+   "Weixiang Yan",
+   "Zhenghao Xu",
+   "Haoming Jiang",
+   "Qingru Zhang",
+   "Qin Lu",
+   "Xin Liu",
+   "Chao Zhang",
+   "Tuo Zhao"
+  ],
+  "abstract": "Reinforcement learning from human feedback (RLHF) has become a powerful post-training paradigm for aligning large language models with human preferences. A core challenge in RLHF is constructing accurate reward signals, where the conventional Bradley-Terry reward models (BT RMs) often suffer from sensitivity to data size and coverage, as well as vulnerability to reward hacking. Generative reward models (GenRMs) offer a more robust alternative by generating chain-of-thought (CoT) rationales followed by a final verdict. However, existing GenRMs rely on shallow, vertically scaled reasoning, limiting their capacity to handle nuanced or complex tasks. Moreover, their pairwise preference outputs are incompatible with standard RLHF algorithms that require pointwise reward signals. In this work, we introduce Think-RM, a training framework that enables long-horizon reasoning in GenRMs by modeling an internal thinking process. Rather than producing structured, externally provided rationales, Think-RM generates flexible, self-guided reasoning traces that support advanced capabilities such as self-reflection, hypothetical reasoning, and divergent reasoning. To elicit these reasoning abilities, we first warm-up the models by supervised fine-tuning (SFT) over long CoT data. We then further improve the model's long-horizon abilities by rule-based reinforcement learning (RL). In addition, we propose a novel pairwise RLHF pipeline that directly optimizes policies from pairwise comparisons, eliminating the need for pointwise reward conversion. Experiments show that Think-RM outperforms baselines on both in-distribution and out-of-distribution tasks, with particularly strong gains on reasoning-heavy benchmarks: more than 10\\% and 5\\% on RewardBench's Chat Hard and Reasoning, and 12\\% on RM-Bench's Math domain. When combined with our pairwise RLHF pipeline, it demonstrates superior end-policy performance compared to traditional approaches. This depth-oriented approach not only broadens the GenRM design space but also establishes a new paradigm for preference-based policy optimization in RLHF.",
+  "keywords": "Deep Learning:Generative Models and Autoencoders",
+  "page": "https://neurips.cc/virtual/2025/poster/117753",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/117753.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/117753-thumb.png"
+ },
+ {
+  "id": "121952",
+  "track": "governance",
+  "title": "Real-Time Hyper-Personalized Generative AI Should Be Regulated to Prevent the Rise of \"Digital Heroin\"",
+  "authors": [
+   "Raad Khraishi",
+   "Cristovao Iglesias de Oliveira",
+   "Devesh Batra",
+   "Peter Gostev",
+   "Giulio Pelosio",
+   "Ramin Okhrati",
+   "Greig Cowan"
+  ],
+  "abstract": "This position paper argues that real-time generative AI has the potential to become the next wave of addictive digital media, creating a new class of digital content akin to ``digital heroin'' with severe implications for mental health and youth development. By shortening the content-generation feedback loop to mere seconds, these advanced models will soon be able to hyper-personalize outputs on the fly. When paired with misaligned incentives (e.g., maximizing user engagement), this will fuel unprecedented compulsive consumption patterns with far-reaching consequences for mental health, cognitive development, and social stability. Drawing on interdisciplinary research, from clinical observations of social media addiction to neuroscientific studies of dopamine-driven feedback, we illustrate how real-time tailored content generation may erode user autonomy, foment emotional distress, and disproportionately endanger vulnerable groups, such as adolescents. Due to the rapid advancement of generative AI and its potential to induce severe addiction-like effects, we call for strong government oversight akin to existing controls on addictive substances, particularly for minors. We further urge the machine learning community to act proactively by establishing robust design guidelines, collaborating with public health experts, and supporting targeted policy measures to ensure responsible and ethical deployment, rather than paving the way for another wave of unregulated digital dependence.",
+  "keywords": "Social Aspects",
+  "page": "https://neurips.cc/virtual/2025/poster/121952",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121952.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121952-thumb.png"
+ },
+ {
+  "id": "121916",
+  "track": "governance",
+  "title": "Position: AI Should Sense Better, Not Just Scale Bigger: Adaptive Sensing as a Paradigm Shift",
+  "authors": [
+   "Eunsu Baek",
+   "Keondo Park",
+   "Jeonggil Ko",
+   "Min-hwan Oh",
+   "Taesik Gong",
+   "Hyung-Sin Kim"
+  ],
+  "abstract": "Current AI advances largely rely on scaling neural models and expanding training datasets to achieve generalization and robustness. Despite notable successes, this paradigm incurs significant environmental, economic, and ethical costs, limiting sustainability and equitable access. Inspired by biological sensory systems, where adaptation occurs dynamically at the input (e.g., adjusting pupil size, refocusing vision)—we advocate for adaptive sensing as a necessary and foundational shift. Adaptive sensing proactively modulates sensor parameters (e.g., exposure, sensitivity, multimodal configurations) at the input level, significantly mitigating covariate shifts and improving efficiency. Empirical evidence from recent studies demonstrates that adaptive sensing enables small models (e.g., EfficientNet-B0) to surpass substantially larger models (e.g., OpenCLIP-H) trained with significantly more data and compute. We (i) outline a roadmap for broadly integrating adaptive sensing into real-world applications spanning humanoid, healthcare, autonomous systems, agriculture, and environmental monitoring, (ii) critically assess technical and ethical integration challenges, and (iii) propose targeted research directions, such as standardized benchmarks, real-time adaptive algorithms, multimodal integration, and privacy-preserving methods. Collectively, these efforts aim to transition the AI community toward sustainable, robust, and equitable artificial intelligence systems.",
+  "keywords": "Data-centric AI",
+  "page": "https://neurips.cc/virtual/2025/poster/121916",
+  "image": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121916.png",
+  "thumb": "https://neurips.cc/media/PosterPDFs/NeurIPS%202025/121916-thumb.png"
+ }
+]

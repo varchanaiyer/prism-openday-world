@@ -1,0 +1,40 @@
+# NeurIPS 2025 posters hung in the poster hall, one per line: <track> <neurips.cc poster id>
+# Tracks mirror PRISM's four: technical, evals, frontier, governance.
+technical 119475
+technical 116911
+technical 118303
+technical 117903
+technical 117017
+technical 117222
+evals 115242
+evals 119752
+evals 121833
+evals 121801
+evals 117676
+evals 115456
+frontier 117536
+frontier 120154
+frontier 121456
+frontier 116653
+frontier 116237
+frontier 120115
+governance 121857
+governance 121940
+governance 119577
+governance 119531
+governance 121622
+# replacements and extras (pages without an uploaded poster image are skipped by the fetch script)
+technical 115305
+technical 116311
+technical 119154
+technical 117699
+technical 120144
+evals 117907
+evals 121440
+evals 118304
+frontier 117753
+governance 121933
+governance 121925
+governance 121952
+governance 121936
+governance 121916

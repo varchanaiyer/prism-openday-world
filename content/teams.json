@@ -1,0 +1,99 @@
+[
+ {
+  "slug": "rachel-freedman",
+  "mentor": "Rachel Freedman",
+  "title": "Reward Basis Decomposition",
+  "theme": "Personalized reward model bases",
+  "track": "technical",
+  "blurb": "Personalized reward models such as LoRe represent each person's preferences as a mix of a few shared basis reward functions. This team studies what those learned bases actually encode, whether they are as diverse as they look, and what a single reward direction in a language model is really measuring."
+ },
+ {
+  "slug": "aviram-berg",
+  "mentor": "Aviram Berg",
+  "title": "Cross-Lingual Rule Following",
+  "theme": "Do rules and concepts hold across languages?",
+  "track": "technical",
+  "blurb": "When a model is told a rule in English, does it keep following it in Hindi, Swahili or Urdu? The team builds a dataset of rule and cultural pairs across many languages and uses activation patching and attribution methods to trace where a model binds a rule and how much of its reasoning happens in English."
+ },
+ {
+  "slug": "rubi-hudson",
+  "mentor": "Rubi Hudson",
+  "title": "AI Preference Drift During Training",
+  "theme": "How preferences move across SFT, DPO and GRPO",
+  "track": "technical",
+  "blurb": "Post-training changes what a model wants, not just what it can do. The team trains small open models through supervised fine-tuning, DPO and GRPO, measures the model's stated preferences at each stage, and asks whether preference drift is predictable, and whether it tracks capability change or moves on its own."
+ },
+ {
+  "slug": "manjari-narayan",
+  "mentor": "Manjari Narayan",
+  "title": "Interpretability for Scientific Causal Reasoning",
+  "theme": "Probing causal understanding of molecules",
+  "track": "technical",
+  "blurb": "Can a language model reason causally about chemistry, or does it pattern-match? Using potency and selectivity data for a family of receptor ligands as a test case, the team designs standardized prompts and interpretability probes to test four hypotheses about how models encode scientific causal structure."
+ },
+ {
+  "slug": "naiyarah-hussain",
+  "mentor": "Naiyarah Hussain",
+  "title": "Multilingual Safety Evals",
+  "theme": "Native-authored multi-turn safety evaluation",
+  "track": "evals",
+  "blurb": "Most safety evaluations are written in English and translated. This team writes multi-turn safety evaluations natively in four languages, runs them against current models, and asks whether safety behaviour holds up when the conversation is not in English."
+ },
+ {
+  "slug": "branwen-owen",
+  "mentor": "Branwen Owen",
+  "title": "Epidemiological Methods for AI Harm Monitoring",
+  "theme": "Measurement readiness for high-severity AI harms",
+  "track": "evals",
+  "blurb": "Public health learned long ago how to monitor harms it cannot fully see. The team borrows epidemiological tools, surveillance, exposure measurement and case definitions, to take a census of the evidence available for high-severity AI harms and to ask which harms we are ready to measure and which we are not."
+ },
+ {
+  "slug": "ayodeji-ibitoye",
+  "mentor": "Ayodeji Olusegun Ibitoye",
+  "title": "LLMs and Conflicting Information",
+  "theme": "How models handle contradictory sources in health",
+  "track": "evals",
+  "blurb": "Real information conflicts: guidelines disagree, sources are stale, studies contradict each other. The team builds a benchmark of conflicting health information and measures whether language models notice the conflict, how they resolve it, and when they should abstain.",
+  "short": "Ayodeji Ibitoye"
+ },
+ {
+  "slug": "zeenath-reza-khan",
+  "mentor": "Zeenath Reza Khan",
+  "title": "Trust Calibration in Healthcare AI",
+  "theme": "Trust under incomplete information",
+  "track": "evals",
+  "blurb": "Clinicians rarely have complete information, and neither do the AI systems that assist them. The team studies how trust in healthcare AI should be calibrated when inputs are incomplete, and how a system's expressed confidence should change as information is withheld."
+ },
+ {
+  "slug": "preeti-ravindra",
+  "mentor": "Preeti Ravindra",
+  "title": "Synchronous Threat Monitoring",
+  "theme": "Runtime monitors for AI control",
+  "track": "frontier",
+  "blurb": "AI control asks how to use a capable model safely even if it might be working against you. The team builds and attacks an information-flow-graph monitor that watches an agent's actions as they happen, hunting for the blind spots an adversarial agent could use and measuring the safety and usefulness trade-off across auditing budgets."
+ },
+ {
+  "slug": "jeyashree-krishnan",
+  "mentor": "Jeyashree Krishnan",
+  "title": "Red-Teaming Protein Foundation Models",
+  "theme": "Adversarial evasion of biosafety classifiers",
+  "track": "frontier",
+  "blurb": "Protein foundation models can design sequences, and biosafety classifiers are meant to catch dangerous ones. The team red-teams those classifiers with adversarial sequence edits, measures how often a harmful design slips through, and studies hardening methods that keep the science useful while closing the gap."
+ },
+ {
+  "slug": "jobst-heitzig",
+  "mentor": "Jobst Heitzig",
+  "title": "Grounding Safe-by-Design AI",
+  "theme": "From a verbal situation to a formal world model",
+  "track": "frontier",
+  "blurb": "Safe-by-design methods need a formal model of the situation an AI is acting in, but real situations arrive as words. The team tests whether a language model can turn a verbal description of a situation into a formal world model faithfully enough to build safety guarantees on, and builds a test suite for that step."
+ },
+ {
+  "slug": "aryan-agarwal",
+  "mentor": "Aryan Agarwal",
+  "title": "How AI Labs Redefine Safety",
+  "theme": "Close-coding the labs' own safety documents",
+  "track": "governance",
+  "blurb": "What does 'safety' mean in a frontier lab's own words, and how has that meaning moved? The team close-codes public safety frameworks, model cards and policy documents over time, tracking where definitions were loosened, tightened or quietly replaced."
+ }
+]
