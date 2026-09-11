@@ -7,7 +7,7 @@ const fs = require("fs"), path = require("path");
 const { ROOT, BASE, TRACKS, ROOMS } = require("./world.cjs");
 const posters = require(path.join(ROOT, "content", "posters.json")), teams = require(path.join(ROOT, "content", "teams.json"));
 const OUT = path.join(ROOT, "pages");
-const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const esc = s => String(s).replace(/\s*[\u2014\u2013]\s*/g, ", ").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const CSS = `
 :root{--bg:#141a26;--card:#1c2333;--ink:#ece5d3;--dim:#a39c8b;--gold:#e9b949;--line:#2c3446}
 *{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Avenir Next",Avenir,"Helvetica Neue",Helvetica,Arial,sans-serif;padding:20px 18px 40px}
