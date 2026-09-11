@@ -61,17 +61,19 @@ function lobby() {
   r.grid("walls", TS.wallsigns.PROGRAMME, 18, 2); r.website("programme", 18, 3, 3, 1, BASE + "/pages/programme.html", "Press SPACE: the open day programme");
   r.grid("walls", TS.wallsigns.DIRECTORY, 23, 2); r.website("directory", 23, 3, 3, 1, BASE + "/pages/directory.html", "Press SPACE: directory of the building");
   /* doors: north to the posters, west to the teams, east to the stage, south to the lounge */
-  r.exit(15, 0, 2, 3, "posters", "from-lobby"); r.entry("from-posters", 15, 3, 2, 1); r.grid("props", TS.signs.POSTERS, 12, 3, true);
-  r.exit(0, 11, 1, 2, "teams", "from-lobby"); r.entry("from-teams", 1, 11, 1, 2); r.grid("props", TS.signs.TEAMS, 1, 9, true);
-  r.exit(31, 11, 1, 2, "stage", "from-lobby"); r.entry("from-stage", 30, 11, 1, 2); r.grid("props", TS.signs.STAGE, 28, 9, true);
-  r.exit(15, 23, 2, 1, "lounge", "from-lobby"); r.entry("from-lounge", 15, 22, 2, 1); r.grid("props", TS.signs.LOUNGE, 12, 22, true);
+  r.exit(15, 0, 2, 3, "posters", "from-lobby"); r.entry("from-posters", 15, 3, 2, 1); r.grid("props", TS.signs["↑ POSTERS"], 12, 3, true); r.grid("props", TS.signs["↑ POSTERS"], 17, 3, true);
+  for (let y = 4; y <= 16; y++) if (y % 2 === 0) { r.set("decor", 15, y, TS.T.ARROW_UP); r.set("decor", 16, y, TS.T.ARROW_UP); }   /* the trail from the spawn point to the posters */
+  r.grid("props", TS.signpost, 18, 13, true);
+  r.exit(0, 11, 1, 2, "teams", "from-lobby"); r.entry("from-teams", 1, 11, 1, 2); r.grid("props", TS.signs["← TEAMS"], 1, 9, true); r.set("decor", 2, 11, TS.T.ARROW_LEFT); r.set("decor", 2, 12, TS.T.ARROW_LEFT);
+  r.exit(31, 11, 1, 2, "stage", "from-lobby"); r.entry("from-stage", 30, 11, 1, 2); r.grid("props", TS.signs["STAGE →"], 28, 9, true); r.set("decor", 29, 11, TS.T.ARROW_RIGHT); r.set("decor", 29, 12, TS.T.ARROW_RIGHT);
+  r.exit(15, 23, 2, 1, "lounge", "from-lobby"); r.entry("from-lounge", 15, 22, 2, 1); r.grid("props", TS.signs["↓ LOUNGE"], 12, 22, true); r.grid("props", TS.signs["↓ LOUNGE"], 17, 22, true); r.set("decor", 15, 21, TS.T.ARROW_DOWN); r.set("decor", 16, 21, TS.T.ARROW_DOWN);
   /* welcome desk and the PRISM site kiosk */
-  r.grid("props", F.desk, 14, 7, true); r.website("welcome-desk", 14, 8, 3, 1, BASE + "/pages/about.html", "Press SPACE: welcome desk, what PRISM is");
+  r.grid("props", F.desk, 19, 7, true); r.website("welcome-desk", 19, 8, 3, 1, BASE + "/pages/about.html", "Press SPACE: welcome desk, what PRISM is");
   r.set("props", 27, 5, F.kiosk); r.set("collisions", 27, 5, TS.T.COLLIDE); r.website("prism-site", 27, 6, 1, 1, "https://prism-research.org", "Press SPACE: prism-research.org");
   r.grid("decor", F.rug, 14, 13); r.grid("props", F.sofa, 6, 15, true); r.grid("props", F.sofa2, 24, 15, true);
   r.grid("props", F.table, 6, 6, true); r.set("props", 5, 7, F.chair); r.set("props", 8, 7, F.chair);
   r.grid("props", F.table, 24, 6, true); r.set("props", 23, 7, F.chair); r.set("props", 26, 7, F.chair);
-  r.plants([[1, 3], [30, 3], [1, 22], [30, 22], [13, 7], [17, 7]]);
+  r.plants([[1, 3], [30, 3], [1, 22], [30, 22], [18, 7], [22, 7]]);
   r.startAt(15, 17, 2, 1); r.zone("lobby", 1, 3, 30, 20);
   return r.build("The PRISM open day. Walk to a sign and press SPACE. North: posters. West: team rooms. East: the stage. South: the lounge.");
 }
@@ -94,7 +96,7 @@ function posterHall() {
       r.website("poster-" + p.id, x, y + 3, 4, 1, BASE + "/pages/posters/" + p.id + ".html", "Press SPACE: " + short(p.title, 64));
     });
   });
-  r.exit(17, H - 1, 2, 1, "lobby", "from-posters"); r.entry("from-lobby", 17, H - 2, 2, 1); r.grid("props", TS.signs.LOBBY, 14, H - 2, true);
+  r.exit(17, H - 1, 2, 1, "lobby", "from-posters"); r.entry("from-lobby", 17, H - 2, 2, 1); r.grid("props", TS.signs["↓ LOBBY"], 14, H - 2, true); r.grid("props", TS.signs["↓ LOBBY"], 19, H - 2, true);
   r.plants([[1, 3], [34, 3], [34, H - 2], [1, H - 2]]);
   r.zone("posters", 1, 3, 34, H - 4);
   return r.build("NeurIPS 2025 posters, one bay per PRISM track. Stand on the coloured strip below a board and press SPACE to read it.");
@@ -109,7 +111,7 @@ function stage() {
   r.set("props", 7, 6, F.lectern); r.set("collisions", 7, 6, TS.T.COLLIDE); r.website("lectern", 7, 7, 1, 1, BASE + "/pages/programme.html", "Press SPACE: the programme and running order");
   for (const y of [11, 13, 15, 17, 19, 21, 23]) for (let x = 4; x <= 29; x++) if (x < 15 || x > 18) r.set("props", x, y, F.seat);
   r.jitsi("stage-call", 1, 3, 32, 22, "PRISM Open Day Stage");
-  r.exit(0, 26, 1, 2, "lobby", "from-stage"); r.entry("from-lobby", 1, 26, 1, 2); r.grid("props", TS.signs.LOBBY, 2, 24, true);
+  r.exit(0, 26, 1, 2, "lobby", "from-stage"); r.entry("from-lobby", 1, 26, 1, 2); r.grid("props", TS.signs["← LOBBY"], 2, 24, true);
   r.plants([[32, 3], [32, 28], [1, 28], [32, 10], [1, 10]]);
   r.zone("stage", 1, 3, 32, 26);
   return r.build("The main stage. Everyone in the seats and on the stage shares one call. Talks and the cohort showcase happen here.");
@@ -134,7 +136,7 @@ function teamRooms() {
     r.plants([[px + 1, py + 9], [px + 8, py + 9]]);
     r.zone("team-" + t.slug, px + 1, py + 3, 8, 7);
   });
-  r.exit(49, 41, 1, 2, "lobby", "from-teams"); r.entry("from-lobby", 48, 41, 1, 2); r.grid("props", TS.signs.LOBBY, 45, 42, true);
+  r.exit(49, 41, 1, 2, "lobby", "from-teams"); r.entry("from-lobby", 48, 41, 1, 2); r.grid("props", TS.signs["LOBBY →"], 45, 42, true);
   r.plants([[1, 3], [48, 3], [1, 42], [24, 3], [25, 3]]);
   r.zone("teams", 1, 3, 48, 40);
   return r.build("Twelve team pods grouped by track. Read the nameplate at the top of a pod, then press SPACE inside to join that team's call.");
@@ -145,7 +147,7 @@ function lounge() {
   const r = new Room("lounge", 30, 22);
   r.floor(1, 3, 28, 18, TS.floors.lounge); r.box(0, 0, 30, 22, 2);
   r.grid("walls", TS.banners.lounge, 3, 1);
-  r.exit(14, 0, 2, 3, "lobby", "from-lounge"); r.entry("from-lobby", 14, 3, 2, 1); r.grid("props", TS.signs.LOBBY, 11, 3, true);
+  r.exit(14, 0, 2, 3, "lobby", "from-lounge"); r.entry("from-lobby", 14, 3, 2, 1); r.grid("props", TS.signs["↑ LOBBY"], 11, 3, true); r.grid("props", TS.signs["↑ LOBBY"], 16, 3, true);
   r.grid("walls", TS.wallsigns["GET INVOLVED"], 19, 2); r.website("get-involved", 19, 3, 4, 1, BASE + "/pages/join.html", "Press SPACE: get involved with PRISM");
   r.grid("props", F.coffee, 2, 6, true); r.website("coffee", 2, 7, 3, 1, BASE + "/pages/coffee.html", "Press SPACE: the coffee machine");
   r.grid("props", F.table, 7, 11, true); r.set("props", 6, 11, F.chair); r.set("props", 9, 11, F.chair);
@@ -171,6 +173,7 @@ const built = { lobby: lobby(), posters: posterHall(), stage: stage(), teams: te
 for (const key in built) { fs.writeFileSync(path.join(ROOT, "maps", key + ".tmj"), JSON.stringify(built[key])); const m = built[key]; summary.push({ map: key + ".tmj", size: m.width + "x" + m.height, objects: m.layers.find(l => l.name === "floorLayer").objects.length }); }
 const zones = {};
 for (const k in ROOMS) zones[k] = "Welcome to " + ROOMS[k].name.toLowerCase();
+zones.lobby = "The lobby. Posters: follow the arrows up through the top door. Teams left, stage right, lounge below.";
 for (const k in TRACKS) zones["bay-" + k] = TRACKS[k].name + " posters";
 zones.quiet = "The quiet room. Voices off, please.";
 for (const t of teams) zones["team-" + t.slug] = t.mentor + "'s team: " + t.title;

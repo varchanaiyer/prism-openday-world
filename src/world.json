@@ -1,7 +1,7 @@
 {
  "base": "https://varchanaiyer.github.io/prism-openday-world",
  "zones": {
-  "lobby": "Welcome to the lobby",
+  "lobby": "The lobby. Posters: follow the arrows up through the top door. Teams left, stage right, lounge below.",
   "posters": "Welcome to the poster hall",
   "stage": "Welcome to the auditorium",
   "teams": "Welcome to the team rooms",

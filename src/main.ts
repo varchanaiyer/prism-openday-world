@@ -14,6 +14,12 @@ WA.onInit().then(() => {
       } catch (e) { console.warn("banner", e); }
     });
   }
+  const here = (WA.room.mapURL || "").split("/").pop() || "";
+  const rooms: [string, string][] = [["lobby", "Lobby"], ["posters", "Posters"], ["stage", "Stage"], ["teams", "Teams"], ["lounge", "Lounge"]];
+  for (const [key, label] of rooms) {
+    if (here.startsWith(key + ".tmj")) continue;
+    WA.ui.actionBar.addButton({ id: "go-" + key, label, callback: () => { WA.nav.goToRoom("./" + key + ".tmj#from-" + (here.replace(/\.tmj.*$/, "") || "lobby")); } });
+  }
   WA.ui.actionBar.addButton({
     id: "directory", label: "Directory",
     callback: () => { WA.nav.openCoWebSite(W.base + "/pages/directory.html", false, "", 50).catch(e => console.warn(e)); }
