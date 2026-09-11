@@ -203,7 +203,13 @@ fs.mkdirSync(path.join(ROOT, "maps"), { recursive: true });
 const built = { lobby: lobby(), posters: posterFoyer(), stage: stage(), teams: teamRooms(), lounge: lounge() };
 for (const t of ORDER) built["posters-" + t] = posterRoom(t);
 const summary = [];
-for (const key in built) { fs.writeFileSync(path.join(ROOT, "maps", key + ".tmj"), JSON.stringify(built[key])); const m = built[key]; summary.push({ map: key + ".tmj", size: m.width + "x" + m.height, objects: m.layers.find(l => l.name === "floorLayer").objects.length }); }
+/* A map edited by hand in Tiled carries a map property handEdited = true; the generator then leaves that file alone. */
+function handEdited(file) { try { const m = JSON.parse(fs.readFileSync(file, "utf8")); return (m.properties || []).some(p => p.name === "handEdited" && p.value === true); } catch (e) { return false; } }
+for (const key in built) {
+  const file = path.join(ROOT, "maps", key + ".tmj"), m = built[key];
+  if (handEdited(file)) { summary.push({ map: key + ".tmj", size: "kept", objects: "hand-edited in Tiled, not regenerated" }); continue; }
+  fs.writeFileSync(file, JSON.stringify(m)); summary.push({ map: key + ".tmj", size: m.width + "x" + m.height, objects: m.layers.find(l => l.name === "floorLayer").objects.length });
+}
 /* every exit must land on a named arrival in the other map */
 const entries = {}; for (const key in built) entries[key] = new Set(built[key].layers.find(l => l.name === "floorLayer").objects.filter(o => o.properties.some(p => p.name === "start")).map(o => o.name));
 let bad = 0;

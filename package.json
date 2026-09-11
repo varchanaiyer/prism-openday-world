@@ -13,6 +13,7 @@
     "upload-only": "upload-wa-map",
     "posters": "node scripts/fetch-posters.cjs",
     "content": "node scripts/tileset.cjs && node scripts/build-maps.cjs && node scripts/build-pages.cjs",
+    "previews": "node scripts/previews.cjs",
     "build": "npm run buildmap && node scripts/postbuild.cjs"
   },
   "devDependencies": {
