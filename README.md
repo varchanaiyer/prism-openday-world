@@ -4,12 +4,13 @@ A walk-around venue for the PRISM open day, built on [WorkAdventure](https://wor
 PRISM is the Peer-vetted Research Initiative for Safety Methodologies, a sixteen-week
 AI safety research fellowship run by Women Who Do Data.
 
-Five rooms joined by doors:
+Nine rooms joined by doors:
 
 | Map | What is there |
 | --- | --- |
 | `maps/lobby.tmj` | welcome desk (about PRISM), programme and directory boards, a kiosk for prism-research.org, doors to everything |
-| `maps/posters.tmj` | NeurIPS 2025 posters on standing boards, one bay per PRISM track; stand on the coloured strip and press SPACE |
+| `maps/posters.tmj` | the poster foyer: four doors in the top wall, one per PRISM track, each with a coloured runner and a signpost in the middle |
+| `maps/posters-<track>.tmj` | one room per track (technical, evals, frontier, governance) with the NeurIPS 2025 posters on standing boards; stand on the coloured strip and press SPACE. Side doors join neighbouring tracks |
 | `maps/stage.tmj` | the auditorium: a screen, a lectern with the programme, and one shared call for everyone in the seats |
 | `maps/teams.tmj` | twelve pods, one per team, each with a nameplate, a project page and an opt-in team call |
 | `maps/lounge.tmj` | coffee, sofas, the get-involved board, and a silent reading room with the reading list |

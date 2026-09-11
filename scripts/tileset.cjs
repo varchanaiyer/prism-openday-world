@@ -9,7 +9,8 @@
 const fs = require("fs"), path = require("path");
 const sharp = require("sharp");
 const { Sprite, Atlas, font, SIZE } = require("./paint.cjs");
-const { ROOT, TRACKS, ROOMS } = require("./world.cjs");
+const { ROOT, TRACKS, ROOMS, SHORT } = require("./world.cjs");
+const BASE_ROOMS = Object.keys(ROOMS).filter(k => !ROOMS[k].style);
 const posters = require(path.join(ROOT, "content", "posters.json"));
 const teams = require(path.join(ROOT, "content", "teams.json"));
 
@@ -39,10 +40,10 @@ function plate(lines, wTiles, hTiles, { bg = INK, edge = GOLD, colors = [PAPER],
 function floorTile(color, seed) { const s = blank(); s.rect(0, 0, SIZE, SIZE, color).rect(0, 0, SIZE, 1, shade(color, 0.1)).rect(0, 0, 1, SIZE, shade(color, 0.1)); return s.grain(3, seed); }
 T.EMPTY = A.one(blank()); T.COLLIDE = A.one(blank()); T.ZONE = A.one(blank()); T.START = A.one(blank());
 const floors = {}, faces = {}, trackFloors = {};
-for (const key in ROOMS) floors[key] = [A.one(floorTile(ROOMS[key].floor[0], 1)), A.one(floorTile(ROOMS[key].floor[1], 2))];
+for (const key of BASE_ROOMS) floors[key] = [A.one(floorTile(ROOMS[key].floor[0], 1)), A.one(floorTile(ROOMS[key].floor[1], 2))];
 for (const key in TRACKS) trackFloors[key] = A.one(floorTile(mix(TRACKS[key].color, "#ffffff", 0.7), 7));
 T.WALL_TOP = A.one(blank().rect(0, 0, SIZE, SIZE, WALLTOP).rect(0, 0, SIZE, 2, tint(WALLTOP, 0.2)).rect(0, SIZE - 2, SIZE, 2, shade(WALLTOP, 0.4)).grain(2, 5));
-for (const key in ROOMS) {
+for (const key of BASE_ROOMS) {
   const c = ROOMS[key].face, mk = bottom => { const s = blank().gradient(0, 0, SIZE, SIZE, tint(c, 0.08), shade(c, 0.1)); for (let y = 8; y < SIZE; y += 8) s.rect(0, y, SIZE, 1, shade(c, 0.22)); if (bottom) s.rect(0, SIZE - 4, SIZE, 4, shade(c, 0.5)).rect(0, SIZE - 4, SIZE, 1, tint(c, 0.2)); return s.grain(2, 3); };
   faces[key] = { top: A.one(mk(false)), bottom: A.one(mk(true)) };
 }
@@ -90,18 +91,33 @@ function whiteboard() { const s = sprite(2, 1); s.rect(2, 2, 60, 26, "#c9ccd2").
   const furniture = { desk: desk(), table: table(), chair: chair("#6c5b7b"), seat: chair("#8b3a4a"), sofa: sofa("#6b4f8f"), sofa2: sofa("#3f7a6a"), plant: plant(), shelf: shelf(), screen: screen(), lectern: lectern(), coffee: coffee(), rug: rug("#b8574e"), rug2: rug("#4f7f8f"), kiosk: kiosk(), whiteboard: whiteboard() };
   const banners = {
     lobby: A.add(plate(["PRISM OPEN DAY", "PEER-VETTED RESEARCH INITIATIVE FOR SAFETY METHODOLOGIES"], 10, 2, { scales: [4, 1], colors: [GOLD, PAPER] })),
-    posters: A.add(plate(["POSTER HALL", "NEURIPS 2025 POSTERS. STAND BELOW A BOARD AND PRESS SPACE"], 12, 2, { scales: [4, 1], colors: [GOLD, PAPER] })),
+    foyer: A.add(plate(["POSTER FOYER", "FOUR ROOMS, ONE PER TRACK. FOLLOW A COLOURED RUNNER"], 8, 2, { scales: [4, 1], colors: [GOLD, PAPER] })),
     teams: A.add(plate(["TEAM ROOMS", "TWELVE TEAMS, FOUR TRACKS. PRESS SPACE AT A NAMEPLATE"], 12, 2, { scales: [4, 1], colors: [GOLD, PAPER] })),
     lounge: A.add(plate(["LOUNGE", "COFFEE, SOFAS AND A QUIET ROOM"], 8, 2, { scales: [4, 1], colors: [GOLD, PAPER] }))
   };
-  const signs = {}; for (const t of ["↑ POSTERS", "← TEAMS", "STAGE →", "↓ LOUNGE", "↓ LOBBY", "← LOBBY", "LOBBY →", "↑ LOBBY"]) signs[t] = A.add(plate([t], 3, 1, { scales: [2], colors: [GOLD] }));
+  const signs = {}; for (const t of ["↑ POSTERS", "← TEAMS", "STAGE →", "↓ LOUNGE", "↓ LOBBY", "← LOBBY", "LOBBY →", "↑ LOBBY", "↓ FOYER"]) signs[t] = A.add(plate([t], 3, 1, { scales: [2], colors: [GOLD] }));
+  const order = ["technical", "evals", "frontier", "governance"], roomBanners = {}, doorSigns = {}, sideSigns = {}, signposts = {};
+  for (const k of order) {
+    roomBanners[k] = A.add(plate([TRACKS[k].name.toUpperCase() + " POSTERS", "STAND ON THE COLOURED STRIP BELOW A BOARD AND PRESS SPACE"], 12, 2, { scales: [3, 1], colors: [GOLD, PAPER], edge: TRACKS[k].color }));
+    doorSigns[k] = A.add(plate(["↑ " + TRACKS[k].name.toUpperCase()], 6, 1, { scales: [2], colors: [GOLD], edge: TRACKS[k].color }));
+    sideSigns["← " + k] = A.add(plate(["← " + SHORT[k].toUpperCase()], 4, 1, { scales: [2], colors: [GOLD], edge: TRACKS[k].color }));
+    sideSigns[k + " →"] = A.add(plate([SHORT[k].toUpperCase() + " →"], 4, 1, { scales: [2], colors: [GOLD], edge: TRACKS[k].color }));
+  }
+  signposts.foyer = A.add(plate(["↑ FOUR POSTER ROOMS", order.map(k => SHORT[k].toUpperCase()).join(" · "), "↓ LOBBY"], 6, 2, { scales: [2, 1, 2], colors: [GOLD, PAPER, PAPER] }));
+  order.forEach((k, i) => {
+    const lines = [];
+    if (i > 0) lines.push("← " + TRACKS[order[i - 1]].name.toUpperCase());
+    if (i < order.length - 1) lines.push(TRACKS[order[i + 1]].name.toUpperCase() + " →");
+    lines.push("↓ FOYER · LOBBY");
+    signposts[k] = A.add(plate(lines, 6, 2, { scales: lines.map(() => 2), colors: lines.map((l, j) => j === lines.length - 1 ? GOLD : PAPER), edge: TRACKS[k].color }));
+  });
   const signpost = A.add(plate(["↑ POSTERS", "← TEAMS · STAGE →", "↓ LOUNGE"], 5, 2, { scales: [2, 2, 2], colors: [GOLD, PAPER, PAPER] }));
   const wallsigns = {}; for (const t of ["PROGRAMME", "DIRECTORY", "QUIET ROOM"]) wallsigns[t] = A.add(plate([t], 3, 1, { scales: [2] }));
   wallsigns["GET INVOLVED"] = A.add(plate(["GET INVOLVED"], 4, 1, { scales: [2] }));
   const bays = {}; for (const k in TRACKS) bays[k] = A.add(plate([TRACKS[k].name.toUpperCase()], 5, 1, { scales: [2], edge: TRACKS[k].color }));
   const nameplates = {}; for (const t of teams) nameplates[t.slug] = A.add(plate([t.short || t.mentor, t.theme], 6, 2, { scales: [2, 1], colors: [PAPER, GOLD], edge: TRACKS[t.track].color }));
   const boards = {}; for (const p of posters) boards[p.id] = await board(p);
-  const out = { file: "../tilesets/prism.png", cols: A.cols, width: A.width, height: A.height, tileCount: A.tiles.length, T, floors, faces, trackFloors, furniture, banners, signs, signpost, wallsigns, bays, nameplates, boards };
+  const out = { file: "../tilesets/prism.png", cols: A.cols, width: A.width, height: A.height, tileCount: A.tiles.length, T, floors, faces, trackFloors, furniture, banners, roomBanners, signs, doorSigns, sideSigns, signpost, signposts, wallsigns, bays, nameplates, boards };
   fs.mkdirSync(path.join(ROOT, "tilesets"), { recursive: true });
   fs.writeFileSync(path.join(ROOT, "tilesets", "prism.png"), A.png());
   fs.writeFileSync(path.join(ROOT, "tilesets", "prism.json"), JSON.stringify(out));
